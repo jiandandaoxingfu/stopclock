@@ -57,9 +57,7 @@
 
         <div id='content'>	
             <div id='clock'>
-            	<span id='minite'>00</span>:
-            	<span id='second'>00</span>:
-            	<span id='percent'>00</span>
+            	<span id='time'>00:00:00</span>
             </div>
         </div>  
 
@@ -75,9 +73,7 @@
 
 		var time = {};
 		var is_run = true;
-		var minite_ele = $$('minite');
-		var second_ele = $$('second');
-		var percent_ele = $$('percent');
+		var time = $$('time');
 		var minite = 0;
 		var second = 0;
 		var percent = 0;
@@ -89,17 +85,18 @@
 	    	if( !is_run  ) return;
 	    	milliseconds += duration;
 	    	percent = Math.floor( milliseconds/10 ) % 100;
-	    	percent_ele.innerText = ((percent % 60) + '').padStart(2, '0');
+	    	
 	    	if( percent == 0 ) {
 	    		second += 1;
 	    		second = second % 60;
-	    		second_ele.innerText = (second + '').padStart(2, '0');
 	    		if( second == 0 ) {
 	    			minite += 1;
 	    			minite = minite % 60;
-	    			minite_ele.innerText = (minite + '').padStart(2, '0');
 	    		}
 	    	}
+	    	time.innerText = ((minite % 60) + '').padStart(2, '0') + ':' 
+	    					+ ((second % 60) + '').padStart(2, '0') + ':'
+	    					+ ((percent % 60) + '').padStart(2, '0');
 	    	setTimeout(update , duration);
 	    }
 
