@@ -94,9 +94,9 @@
 	    			minite = minite % 60;
 	    		}
 	    	}
-	    	time.innerText = ((minite % 60) + '').padStart(2, '0') + ':' 
-	    					+ ((second % 60) + '').padStart(2, '0') + ':'
-	    					+ ((percent % 60) + '').padStart(2, '0');
+	    	time.innerText = (minite + '').padStart(2, '0') + ':' 
+	    					+ (second + '').padStart(2, '0') + ':'
+	    					+ (percent + '').padStart(2, '0');
 	    	setTimeout(update , duration);
 	    }
 
