@@ -122,6 +122,7 @@
 
 	    document.addEventListener('dblclick', function(e) {
 	    	// 双击左侧，复位, 右侧暂停
+	    	e.preventDefault();
 	    	if( e.screenX < middle_width ) {
 	    		reset();
 	    	} else {
