@@ -46,10 +46,6 @@
 			padding: 15px 0;
 			color: gray;
 		}
-		p {
-			overflow: hidden;
-			height: 220px;
-		}
 
 	</style>
 </head>
@@ -61,11 +57,9 @@
 
         <div id='content'>	
             <div id='clock'>
-            	<p>
-            		<span id='minite'>00</span>:
-            		<span id='second'>00</span>:
-            		<span id='percent'>00</span>
-            	</p>
+            	<span id='minite'>00</span>:
+            	<span id='second'>00</span>:
+            	<span id='percent'>00</span>
             </div>
         </div>  
 
@@ -128,7 +122,6 @@
 
 	    document.addEventListener('dblclick', function(e) {
 	    	// 双击左侧，复位, 右侧暂停
-	    	e.preventDefault();
 	    	if( e.screenX < middle_width ) {
 	    		reset();
 	    	} else {
