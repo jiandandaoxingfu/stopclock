@@ -79,7 +79,7 @@
 		var percent = 0;
 		var milliseconds = 0;
 		var duration = 50;
-		var client_width = window.screen.width;
+		var screen_width = window.screen.width;
 
 	    function update() {
 	    	if( !is_run  ) return;
@@ -121,9 +121,9 @@
 
 	    document.addEventListener('click', function(e) {
 	    	// 双击左侧，复位, 右侧暂停
-	    	if( e.screenX < client_width/6 ) {
+	    	if( e.screenX < screen_width/6 ) {
 	    		reset();
-	    	} else if( e.screenX > 5*client_width/6 ) {
+	    	} else if( e.screenX > 5*screen_width/6 ) {
 	    		pause();
 	    	}
 	    })
