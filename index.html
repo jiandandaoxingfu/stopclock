@@ -61,6 +61,39 @@
         <div id='footer'>
         	stopclock ©2019 Created by JMx
         </div>
-      </div>
+    </div>
+	
+	<script type="text/javascript">
+		function $$(id) {
+			return document.getElementById(id);
+		}
+
+		var time = {};
+		var state;
+
+		function getTime() {
+			let minite = Math.random().toFixed(2);
+			let second = Math.random().toFixed(2);
+			let percent = Math.random().toFixed(2);
+			time = { minite: minite, second: second, percent: percent };
+		}
+
+		function setTime() {
+			$$('minite').innerText = time.minite;
+			$$('second').innerText = time.second;
+			$$('percent').innerText = time.percent;
+		}
+
+	    function update() {
+	    	console.log(1)
+	    	getTime();
+	    	setTime();
+	    	setTimeout(update , 10);
+	    }
+
+	    setTimeout(update, 10);
+
+
+	</script>
 </body>
 </html>
