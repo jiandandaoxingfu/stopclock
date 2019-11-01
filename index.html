@@ -52,8 +52,8 @@
 
         <div id='content'>	
             <div id='clock'>
-            	<span id='minite'>05</span>:
-            	<span id='second'>30</span>:
+            	<span id='minite'>00</span>:
+            	<span id='second'>00</span>:
             	<span id='percent'>00</span>
             </div>
         </div>  
@@ -69,26 +69,29 @@
 		}
 
 		var time = {};
-		var state;
-
-		function getTime() {
-			let minite = Math.random().toFixed(2);
-			let second = Math.random().toFixed(2);
-			let percent = Math.random().toFixed(2);
-			time = { minite: minite, second: second, percent: percent };
-		}
-
-		function setTime() {
-			$$('minite').innerText = time.minite;
-			$$('second').innerText = time.second;
-			$$('percent').innerText = time.percent;
-		}
+		var state = 0;  // 0 / 1 / 2,  initial / run / pause
+		var minite_ele = $$('minite');
+		var second_ele = $$('second');
+		var percent_ele = $$('percent');
+		var minite = 0;
+		var second = 0;
+		var percent = 0;
+		var milliseconds = 0;
+		var duration = 50;
 
 	    function update() {
-	    	console.log(1)
-	    	getTime();
-	    	setTime();
-	    	setTimeout(update , 10);
+	    	milliseconds += duration;
+	    	percent = Math.floor( milliseconds/10 ) % 100;
+	    	percent_ele.innerText = ((percent % 60) + '').padStart(2, '0');
+	    	if( percent == 0 ) {
+	    		second += 1;
+	    		second_ele.innerText = ((second % 60) + '').padStart(2, '0');
+	    		if( second == 0 ) {
+	    			minite += 1;
+	    			minite_ele.innerText = ((minite % 60) + '').padStart(2, '0');
+	    		}
+	    	}
+	    	setTimeout(update , duration);
 	    }
 
 	    setTimeout(update, 10);
