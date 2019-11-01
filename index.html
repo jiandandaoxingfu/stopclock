@@ -79,7 +79,7 @@
 		var percent = 0;
 		var milliseconds = 0;
 		var duration = 50;
-		var middle_width = document.body.clientWidth / 2;
+		var client_width = document.body.clientWidth;
 
 	    function update() {
 	    	if( !is_run  ) return;
@@ -104,10 +104,11 @@
 
 	    function reset() {
 	    	is_run = false;
+	    	minite = 0;
+	    	second = 0;
+	    	percent = 0;
 	    	milliseconds = 0;
-	    	minite_ele.innerText = '00';
-	    	second_ele.innerText = '00';
-	    	percent_ele.innerText = '00';
+	    	time.innerText = '00:00:00';
 	    }
 
 	    function pause() {
@@ -117,11 +118,11 @@
 	    	}
 	    }
 
-	    document.addEventListener('dblclick', function(e) {
+	    document.addEventListener('click', function(e) {
 	    	// 双击左侧，复位, 右侧暂停
-	    	if( e.screenX < middle_width ) {
+	    	if( e.screenX < client_width/6 ) {
 	    		reset();
-	    	} else {
+	    	} else if( e.screenX > 5*client_width/6 ) {
 	    		pause();
 	    	}
 	    })
