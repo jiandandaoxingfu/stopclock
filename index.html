@@ -120,10 +120,11 @@
 	    }
 
 	    document.addEventListener('click', function(e) {
+	    	alert(e.screenX + ':' + window.screen.width)
 	    	// 双击左侧，复位, 右侧暂停
-	    	if( e.clientX < client_width/6 ) {
+	    	if( e.screenX < client_width/6 ) {
 	    		reset();
-	    	} else if( e.clientX > 5*client_width/6 ) {
+	    	} else if( e.screenX > 5*client_width/6 ) {
 	    		pause();
 	    	}
 	    })
