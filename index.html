@@ -71,7 +71,7 @@
 		}
 
 		var time = {};
-		var state = 0;  // 0 / 1 / 2,  initial / run / pause
+		var is_run = true;
 		var minite_ele = $$('minite');
 		var second_ele = $$('second');
 		var percent_ele = $$('percent');
@@ -80,8 +80,10 @@
 		var percent = 0;
 		var milliseconds = 0;
 		var duration = 50;
+		var middle_width = document.body.clientWidth / 2;
 
 	    function update() {
+	    	if( !is_run  ) return;
 	    	milliseconds += duration;
 	    	percent = Math.floor( milliseconds/10 ) % 100;
 	    	percent_ele.innerText = ((percent % 60) + '').padStart(2, '0');
@@ -99,6 +101,30 @@
 	    }
 
 	    setTimeout(update, 10);
+
+	    function reset() {
+	    	is_run = false;
+	    	milliseconds = 0;
+	    	minite_ele.innerText = '00';
+	    	second_ele.innerText = '00';
+	    	percent_ele.innerText = '00';
+	    }
+
+	    function pause() {
+	    	is_run = !is_run;
+	    	if( is_run ) {
+	    		update()
+	    	}
+	    }
+	    
+	    document.addEventListener('dblclick', function(e) {
+	    	// 双击左侧，复位, 右侧暂停
+	    	if( e.screenX < middle_width ) {
+	    		reset();
+	    	} else {
+	    		pause();
+	    	}
+	    })
 
 
 	</script>
