@@ -95,10 +95,19 @@
 	    			minite = minite % 60;
 	    		}
 	    	}
+	    	if( minite >= 5 && minite < 7 ) {
+	    		$$('content').style.backgroundColor = 'yellow';
+	    		$$('clock').style.backgroundColor = 'yellow';
+	    		$$('time').style.backgroundColor = 'yellow';
+	    	} else if( minite > 7 ) {
+	    		$$('content').style.backgroundColor = 'red';
+	    		$$('clock').style.backgroundColor = 'red';
+	    		$$('time').style.backgroundColor = 'red';
+	    	}
 	    	time.innerText = (minite + '').padStart(2, '0') + ':' 
 	    					+ (second + '').padStart(2, '0') + ':'
 	    					+ (percent + '').padStart(2, '0');
-	    	setTimeout(update , duration);
+	    	setTimeout(update , duration); 
 	    }
 
 	    setTimeout(update, 10);
