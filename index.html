@@ -95,14 +95,18 @@
 	    			minite = minite % 60;
 	    		}
 	    	}
-	    	if( minite >= 5 && minite < 7 ) {
+	    	let yellow_time = 6;
+	    	let red_time = 8;
+	    	if( minite >= yellow_time && minite < red_time ) {
 	    		$$('content').style.backgroundColor = 'yellow';
 	    		$$('clock').style.backgroundColor = 'yellow';
 	    		$$('time').style.backgroundColor = 'yellow';
-	    	} else if( minite > 7 ) {
+	    		$$('time').style.color = 'black';
+	    	} else if( minite >= red_time ) {
 	    		$$('content').style.backgroundColor = 'red';
 	    		$$('clock').style.backgroundColor = 'red';
 	    		$$('time').style.backgroundColor = 'red';
+	    		$$('time').style.color = 'white';
 	    	}
 	    	time.innerText = (minite + '').padStart(2, '0') + ':' 
 	    					+ (second + '').padStart(2, '0') + ':'
